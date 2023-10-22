@@ -99,6 +99,11 @@ GEM
       ruby2_keywords
     error_highlight (0.5.1)
     erubi (1.12.0)
+    factory_bot (6.2.1)
+      activesupport (>= 5.0.0)
+    factory_bot_rails (6.2.0)
+      factory_bot (~> 6.2.0)
+      railties (>= 5.0.0)
     faker (3.2.1)
       i18n (>= 1.8.11, < 2)
     globalid (1.2.1)
@@ -215,6 +220,9 @@ GEM
     ruby2_keywords (0.0.5)
     shoulda-matchers (5.3.0)
       activesupport (>= 5.2.0)
+    simple_form (5.3.0)
+      actionpack (>= 5.2)
+      activemodel (>= 5.2)
     sprockets (4.2.1)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -261,6 +269,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9, >= 4.9.3)
   error_highlight (>= 0.4.0)
+  factory_bot_rails
   faker (~> 3.2, >= 3.2.1)
   importmap-rails
   jbuilder
@@ -269,6 +278,7 @@ DEPENDENCIES
   rails (~> 7.1.0)
   rspec-rails (~> 6.0.0)
   shoulda-matchers (~> 5.0)
+  simple_form
   sprockets-rails
   stimulus-rails
   tailwindcss-rails (~> 2.0)
