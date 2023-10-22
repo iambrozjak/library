@@ -5,7 +5,7 @@ RSpec.describe "books/new", type: :view do
     assign(:book, Book.new(
       title: "MyString",
       author: "MyString",
-      isbn: "MyString",
+      isbn: 1234567890123,
       description: "MyText"
     ))
   end
