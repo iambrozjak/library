@@ -22,7 +22,7 @@ class BooksController < ApplicationController
     if @book.save
       redirect_to book_path(@book), notice: "Book was successfully created."
     else
-      render :new, status: :unprocessable_entity
+      render :new, alert: "Book was not created.", status: :unprocessable_entity
     end    
   end
 
@@ -37,11 +37,9 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    @book = resourse
-
-    @book.destroy
-
-    redirect_to book_path(@book), notice: "Book was successfully destroyed.", status: :see_other
+    resourse.destroy
+    
+    redirect_to books_path, notice: "Book was successfully destroyed.", status: :see_other
   end
 
   private
