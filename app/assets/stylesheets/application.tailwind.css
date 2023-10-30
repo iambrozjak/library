@@ -1,5 +1,6 @@
 @tailwind base;
 @tailwind components;
+@tailwind utilities;
 
 .flash-notice {
   @apply inline-block px-3 py-2 mb-5 font-medium text-green-700 rounded-lg bg-green-50;
@@ -15,14 +16,9 @@
   
   .btn-blue {
     @apply rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium; 
-    
   }
 
   .btn-red {
     @apply rounded-lg py-3 px-5 bg-red-600 text-white block font-medium; 
-    
   } 
-
 }
-
-@tailwind utilities;

@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe BooksController, type: :request do
   let!(:book) { create (:book) }
-  let(:valid_attributes) { attributes_for(:book) } 
+  let(:valid_attributes) { attributes_for(:book) }
   let(:invalid_attributes) { { title: "" } }
   let(:new_attributes) { { title: "NewTitle" } }
 
@@ -11,7 +11,7 @@ RSpec.describe BooksController, type: :request do
   it "is successful" do
     get books_path
 
-      expect(response).to be_successful
+    expect(response).to be_successful
     end
   end
 
@@ -19,14 +19,14 @@ RSpec.describe BooksController, type: :request do
   it "is successful" do
     get books_path
 
-      expect(response).to be_successful
+    expect(response).to be_successful
     end
   end
 
   describe "GET #new" do
     it "is successful" do
       get new_book_path
-      
+
       expect(response).to be_successful
     end
   end
@@ -46,7 +46,9 @@ RSpec.describe BooksController, type: :request do
           post books_path, params: { book: valid_attributes }
         end.to change(Book, :count).by(1)
 
-      expect(response).to redirect_to(book_url(Book.last))
+        expect(response).to redirect_to(book_url(Book.last))
+
+        expect(flash[:notice]).to eq("Book was successfully created.")
       end
     end
 
@@ -57,6 +59,8 @@ RSpec.describe BooksController, type: :request do
         end.to change(Book, :count).by(0)
 
         expect(response).to be_unprocessable
+
+        expect(flash[:alert]).to eq("Book was not created.")
       end
     end
   end
@@ -70,6 +74,8 @@ RSpec.describe BooksController, type: :request do
         end.to change(book, :title).to(new_attributes[:title])
 
         expect(response).to redirect_to(book_url(book))
+
+        expect(flash[:notice]).to eq("Book was successfully updated.")
       end
     end
 
@@ -89,28 +95,10 @@ RSpec.describe BooksController, type: :request do
       expect do
         delete book_path(book)
       end.to change(Book, :count).by(-1)
+
+      expect(response). to redirect_to books_path
+
+      expect(flash[:notice]).to eq("Book was successfully destroyed.")
     end
-   end  
-
-it  "should create  book" do
-  book =  Book.create!(title:'Look to Windward', author:'Benjamin Wolf', isbn:'9372731109575', description:'Fantasy')
-  expect(book.title).to eq ('Look to Windward')
-end  
-
-it  "should update title " do
-  book =  Book.create!(title:'Look to Windward', author:'Benjamin Wolf', isbn:'9372731109575', description:'Fantasy')
-  expect(book.title).to eq ('Look to Windward')
-  book.title = 'New book'
-  book.save
-  expect(book.title).to eq ('New book')
-end  
-
-
-it  "should delete book" do
-  book = Book.create!(title:'Look to Windward', author:'Benjamin Wolf', isbn:'9372731109575', description:'Fantasy')
-  expect(book.title).to eq ('Look to Windward')
-  book.destroy
-  expect(Book.find_by(title: 'Look to Windward')).to be_nil
+   end
 end
-end
-
