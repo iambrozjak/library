@@ -1,10 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-
   let(:book) { create(:book) }
 
-  it  "expected to have a valid factory" do 
+  it  "expected to have a valid factory" do
     expect(book.valid?).to eq true
   end
 
@@ -16,5 +15,3 @@ RSpec.describe Book, type: :model do
    it { is_expected.to validate_length_of( :isbn).is_equal_to(13) }
   end
 end
-
-

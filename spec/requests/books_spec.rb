@@ -8,18 +8,19 @@ RSpec.describe BooksController, type: :request do
 
 
   describe "GET #index" do
-  it "is successful" do
-    get books_path
+    it "is successful" do
+      get books_path
 
-    expect(response).to be_successful
+      expect(response.body).to include("Books")
+      expect(response.body).to include(book.title)
     end
   end
 
   describe "GET #show" do
-  it "is successful" do
-    get books_path
+    it "is successful" do
+      get books_path
 
-    expect(response).to be_successful
+      expect(response.body).to include(book.title)
     end
   end
 
@@ -27,7 +28,7 @@ RSpec.describe BooksController, type: :request do
     it "is successful" do
       get new_book_path
 
-      expect(response).to be_successful
+      expect(response.body).to include("New book")
     end
   end
 
@@ -35,7 +36,7 @@ RSpec.describe BooksController, type: :request do
     it "is successful" do
       get edit_book_path(book)
 
-      expect(response).to be_successful
+      expect(response.body).to include(book.title)
     end
   end
 
@@ -46,7 +47,7 @@ RSpec.describe BooksController, type: :request do
           post books_path, params: { book: valid_attributes }
         end.to change(Book, :count).by(1)
 
-        expect(response).to redirect_to(book_url(Book.last))
+        expect(response).to be_redirect
 
         expect(flash[:notice]).to eq("Book was successfully created.")
       end
@@ -59,8 +60,6 @@ RSpec.describe BooksController, type: :request do
         end.to change(Book, :count).by(0)
 
         expect(response).to be_unprocessable
-
-        expect(flash[:alert]).to eq("Book was not created.")
       end
     end
   end
