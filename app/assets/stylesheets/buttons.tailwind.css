@@ -1,0 +1,13 @@
+@layer components {
+  .btn {
+    @apply rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium;
+  }
+
+  .btn-blue {
+    @apply rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium;
+  }
+
+  .btn-red {
+    @apply rounded-lg py-3 px-5 bg-red-600 text-white block font-medium;
+  }
+}
