@@ -2,7 +2,7 @@
   <div class="mx-auto">
 
       <%= render "books/book", book: @book %>
-    <%= link_to "Edit this book", edit_book_path(@book), class: "btn-blue" %>
+
     <div class="inline-block ml-2">
        <%= button_to "Destroy this book", book_path(@book), method: :delete, class: "btn-red" %>
     </div>

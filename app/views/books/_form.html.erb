@@ -1,21 +1,19 @@
-<%= simple_form_for @book, defaults: { input_html: { class: "form_input" } }, html: { class: "contents" } do |form| %>
 <div class="my-5">
-    <%= form.input :title %>
-  </div>
-
-  <div class="my-5">
-    <%= form.input :author %>
-  </div>
-
-  <div class="my-5">
-    <%= form.input :isbn %>
-  </div>
-
-  <div class="my-5">
-    <%= form.input :description %>
-  </div>
-
-  <div class="inline">
-    <%= form.button :submit, "Save", class: "btn-blue" %>
-  </div>
-<% end %>
+  <%= simple_form_for book, url: polymorphic_path(book), defaults: { input_html: { class: "form_input" } } do |f| %>
+    <div class="my-5">
+      <%= f.input :title %>
+    </div>
+    <div class="my-5">
+      <%= f.input :author %>
+    </div>
+    <div class="my-5">
+      <%= f.input :isbn, placeholder: '0000000000000 - 13 digits' %>
+    </div>
+    <div class="my-5">
+      <%= f.input :description %>
+     </div>
+    <div class="my-5">
+      <%= f.button :submit, class: "btn-blue" %>
+    </div>
+  <% end %>
+</div>
