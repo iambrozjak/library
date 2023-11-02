@@ -1,7 +1,7 @@
-@import './buttons.tailwind.css';
-@import './flash.tailwind.css';
-@import './form.tailwind.css';
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import './buttons.tailwind.css';
+@import './flash.tailwind.css';
+@import './form.tailwind.css';
