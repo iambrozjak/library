@@ -1,26 +1,26 @@
 require "rails_helper"
 
 RSpec.describe BooksController, type: :request do
-  let!(:book) { create (:book) }
-  let(:valid_attributes) { attributes_for(:book) }
-  let(:invalid_attributes) { { title: "" } }
-  let(:new_attributes) { { title: "NewTitle" } }
-
+  let!(:book) { FactoryBot.create :book }
+  let(:valid_attributes) { FactoryBot.attributes_for(:book) }
+  let(:invalid_attributes) { FactoryBot.attributes_for(:book, :empty_title) }
+  let(:new_attributes) { FactoryBot.attributes_for(:book, :new_title) }
 
   describe "GET #index" do
     it "is successful" do
       get books_path
 
-      expect(response.body).to include("Books")
-      expect(response.body).to include(book.title)
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
   describe "GET #show" do
     it "is successful" do
-      get books_path
+      get book_path(book)
 
-      expect(response.body).to include(book.title)
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -28,7 +28,7 @@ RSpec.describe BooksController, type: :request do
     it "is successful" do
       get new_book_path
 
-      expect(response.body).to include("New book")
+      expect(response).to be_successful
     end
   end
 
@@ -36,7 +36,8 @@ RSpec.describe BooksController, type: :request do
     it "is successful" do
       get edit_book_path(book)
 
-      expect(response.body).to include(book.title)
+      expect(response).to be_successful
+      expect(response.body).to include(CGI.escapeHTML(book.title))
     end
   end
 
@@ -48,7 +49,6 @@ RSpec.describe BooksController, type: :request do
         end.to change(Book, :count).by(1)
 
         expect(response).to be_redirect
-
         expect(flash[:notice]).to eq("Book was successfully created.")
       end
     end
@@ -72,8 +72,7 @@ RSpec.describe BooksController, type: :request do
           book.reload
         end.to change(book, :title).to(new_attributes[:title])
 
-        expect(response).to redirect_to(book_url(book))
-
+        expect(response).to redirect_to(book_path(book))
         expect(flash[:notice]).to eq("Book was successfully updated.")
       end
     end
@@ -96,7 +95,6 @@ RSpec.describe BooksController, type: :request do
       end.to change(Book, :count).by(-1)
 
       expect(response). to redirect_to books_path
-
       expect(flash[:notice]).to eq("Book was successfully destroyed.")
     end
    end

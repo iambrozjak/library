@@ -5,4 +5,13 @@ FactoryBot.define do
     isbn { Faker::Number.number(digits: 13) }
     description { Faker::Book.genre }
   end
+
+  trait :empty_title do
+    title { "" }
+  end
+
+  trait :new_title do
+    title { "NewTitle" }
+  end
+
 end
