@@ -13,5 +13,4 @@ FactoryBot.define do
   trait :new_title do
     title { "NewTitle" }
   end
-
 end

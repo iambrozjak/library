@@ -3,8 +3,8 @@ require 'rails_helper'
 RSpec.describe Book, type: :model do
   let(:book) { create(:book) }
 
-  it  "expected to have a valid factory" do
-    expect(book.valid?).to eq true
+  it "is persisted to the database" do
+    expect(book).to be_persisted
   end
 
   describe 'validations' do
