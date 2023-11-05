@@ -169,4 +169,4 @@ $RECYCLE.BIN/
 *.lnk
 
 # End of https://www.toptal.com/developers/gitignore/api/windows,ruby,visualstudiocode,rails
-/app/assets/builds/tailwind.css
+app/assets/builds/tailwind.css
