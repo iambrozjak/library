@@ -1,7 +1,7 @@
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">Editing book</h1>
 
-    <%= render "books/form", book: @book %>
+  <%= render "books/form", book: @book %>
 
   <%= link_to "Show this book", book_path(@book), class: "btn" %>
   <%= link_to "Back to books", books_path, class: "btn" %>

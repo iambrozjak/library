@@ -1,10 +1,9 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
-
-      <%= render "books/book", book: @book %>
+    <%= render "books/book", book: @book %>
 
     <div class="inline-block ml-2">
-       <%= button_to "Destroy this book", book_path(@book), method: :delete, class: "btn-red" %>
+      <%= button_to "Destroy this book", book_path(@book), method: :delete, class: "btn-red" %>
     </div>
 
     <%= link_to "Back to books", books_path, class: "btn-blue" %>
