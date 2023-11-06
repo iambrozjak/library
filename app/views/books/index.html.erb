@@ -4,7 +4,7 @@
     <%= link_to "New book", new_book_path, class: "btn-blue" %>
   </div>
 
-  <div id="books" class="min-w-full">
+  <div id="books" class="grid grid-cols-3 gap-10">
     <%= render  partial: "books/book", collection: @books %>
   </div>
 </div>
