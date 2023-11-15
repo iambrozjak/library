@@ -9,7 +9,7 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
-gem 'devise', '~> 4.9', '>= 4.9.3'
+gem "devise", "~> 4.9", ">= 4.9.3"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 gem "tailwindcss-rails", "~> 2.0"
@@ -22,7 +22,6 @@ group :development, :test do
   gem "shoulda-matchers", "~> 5.0"
   gem "faker", "~> 3.2", ">= 3.2.1"
   gem "factory_bot_rails"
-
 end
 
 group :development do
