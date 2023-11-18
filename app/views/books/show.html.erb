@@ -1,5 +1,6 @@
 <div class="mx-auto md:w-2/3 w-full flex">
   <div class="mx-auto">
+    <%= image_tag @book.cover, class: "h-2/5" if @book.cover.present? %>
     <p class="my-5">
       <strong class="block font-medium mb-1">Title:</strong>
       <%= @book.title %>
