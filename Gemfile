@@ -9,12 +9,13 @@ gem "importmap-rails"
 gem "turbo-rails"
 gem "stimulus-rails"
 gem "jbuilder"
-gem 'devise', '~> 4.9', '>= 4.9.3'
+gem "devise", "~> 4.9", ">= 4.9.3"
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 gem "bootsnap", require: false
 gem "tailwindcss-rails", "~> 2.0"
 gem "simple_form"
 gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
+
 
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
