@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe Book, type: :model do
-  let(:book) { create(:book) }
+  let!(:book) { create(:book) }
 
   it "is persisted to the database" do
     expect(book).to be_persisted
