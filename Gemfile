@@ -22,7 +22,6 @@ group :development, :test do
   gem "shoulda-matchers", "~> 5.0"
   gem "faker", "~> 3.2", ">= 3.2.1"
   gem "factory_bot_rails"
-
 end
 
 group :development do
