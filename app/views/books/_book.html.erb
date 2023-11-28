@@ -1,4 +1,6 @@
 <div id="<%= dom_id book %>">
+  <%= image_tag book.cover, class: "h-64" if book.cover.present? %>
+
   <p class="my-5">
     <strong class="block font-medium mb-1">Title:</strong>
     <%= book.title %>
