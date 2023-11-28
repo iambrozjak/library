@@ -16,7 +16,6 @@ gem "tailwindcss-rails", "~> 2.0"
 gem "simple_form"
 gem "error_highlight", ">= 0.4.0", platforms: [:ruby]
 
-
 group :development, :test do
   gem "debug", platforms: %i[ mri windows ]
   gem "rspec-rails", "~> 6.0.0"
