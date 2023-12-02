@@ -25,7 +25,6 @@ class BooksController < ApplicationController
     end
   end
 
-
   def update
     @book = resourse
 
@@ -42,7 +41,24 @@ class BooksController < ApplicationController
     redirect_to books_path,  notice: "Book was successfully destroyed.", status: :see_other
   end
 
+  def search
+    if search_params[:query].present?
+      @books = BooksIndex.query(query_string: {fields: [:title, :author],
+      query: search_params[:query], default_operator: 'and'}).records
+
+      flash.now[:notice] = @books.any? ? "Found #{@books.count} books" : "Books was not found."
+    else
+     flash.now[:notice] = "Please, enter your search parameters."
+    end
+
+   render :index
+  end
+
   private
+
+  def search_params
+    params.require(:search).permit(:query)
+  end
 
   def book_params
     params.require(:book).permit(:title, :author, :isbn, :description)
