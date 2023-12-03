@@ -1,0 +1,6 @@
+<%= simple_form_for(:search, method: :get, url: search_books_path) do |f| %>
+  <div class="flex items-center justify-end space-x-2">
+    <%= f.input :query, as: :search, input_html: { placeholder: "Search in library..." }, label: false %>
+    <%= f.submit "Search", class: "btn-blue" %>
+  </div>
+<% end %>
