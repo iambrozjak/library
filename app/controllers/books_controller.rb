@@ -15,6 +15,10 @@ class BooksController < ApplicationController
     @book = resourse
   end
 
+  def read
+    @book = resourse
+  end
+
   def create
     @book = Book.new(book_params)
 

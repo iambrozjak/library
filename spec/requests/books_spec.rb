@@ -1,7 +1,9 @@
 require "rails_helper"
 
 RSpec.describe BooksController, type: :request do
-  let!(:book) { FactoryBot.create :book }
+  include Devise::Test::IntegrationHelpers
+  let!(:book) { FactoryBot.create(:book, :with_content) }
+  let(:user) { create(:user) }
   let(:valid_attributes) { FactoryBot.attributes_for(:book) }
   let(:invalid_attributes) { FactoryBot.attributes_for(:book, :empty_title) }
   let(:new_attributes) { FactoryBot.attributes_for(:book, :new_title) }
@@ -98,4 +100,25 @@ RSpec.describe BooksController, type: :request do
       expect(flash[:notice]).to eq("Book was successfully destroyed.")
     end
    end
+
+   describe "GET #read" do
+   context "user is authorized" do
+     it "is successful" do
+       sign_in user
+       get read_book_path(book)
+
+       expect(response).to be_successful
+       expect(response.body).to include(book.content.filename.to_s)
+     end
+   end
+
+   context "user is not authorized" do
+     it "is successful" do
+       get read_book_path(book)
+
+       expect(response.body).not_to include(book.content.filename.to_s)
+     end
+   end
+ end
+
 end

@@ -20,7 +20,9 @@
       <strong class="block font-medium mb-1">Description:</strong>
       <%= @book.description %>
     </p>
-
+    <% if user_signed_in? && @book.content.present? %>
+      <%= link_to "Read this book", read_book_path(@book), class: "btn" %>
+    <% end %>
     <%= link_to "Edit this book",  edit_book_path(@book), class: "btn" %>
     <%= link_to "Back to books", books_path, class: "btn" %>
   </div>
